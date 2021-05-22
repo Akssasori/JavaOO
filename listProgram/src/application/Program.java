@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -11,6 +13,7 @@ public class Program {
 		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
+		List<Employe> listEmploye = new ArrayList<>();
 		
 		Employe employe = new Employe();
 		
@@ -19,7 +22,8 @@ public class Program {
 		for (int i = 1; i <= many ; i++) {
 			System.out.println("Emplyoee #"+ i );
 			System.out.println("id: ");
-			employe.setId(sc.nextInt());
+			listEmploye.add(employe.setId(sc.nextInt()));
+			//employe.setId(list.add(sc.nextInt()));
 			System.out.println("Name: ");
 			employe.setName(sc.next());
 			System.out.println("Salary: ");
@@ -27,7 +31,7 @@ public class Program {
 			
 		}
 		
-		System.out.println(employe);
+		System.out.println(listEmploye);
 		
 		
 		
