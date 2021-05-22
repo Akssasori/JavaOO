@@ -1,10 +1,15 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Employe {
 	
 	private int id;
 	private String name;
 	private Double salary;
+	
+	List<Employe> employe = new ArrayList<>();
 	
 	public Employe() {
 		// TODO Auto-generated constructor stub
