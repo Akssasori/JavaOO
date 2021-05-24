@@ -13,28 +13,60 @@ public class Program {
 		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		List<Employe> listEmploye = new ArrayList<>();
-		
-		Employe employe = new Employe();
+		List<Employe> list = new ArrayList<>();
 		
 		System.out.println("How many employees will be registered?");
-		int many = sc.nextInt();
-		for (int i = 1; i <= many ; i++) {
-			System.out.println("Emplyoee #"+ i );
-			System.out.println("id: ");
-			listEmploye.add(employe.setId(sc.nextInt()));
-			//employe.setId(list.add(sc.nextInt()));
+		int N = sc.nextInt();
+		
+		for (int i = 0; i < N ; i++) {
+			
+			System.out.println();
+			System.out.println("Emplyoee #"+ (i + 1 ) + ":");
+			System.out.print("id: ");
+			Integer id = sc.nextInt();
 			System.out.println("Name: ");
-			employe.setName(sc.next());
+			sc.nextLine();
+			String name = sc.nextLine();
 			System.out.println("Salary: ");
-			employe.setSalary(sc.nextDouble());
+			Double salary = sc.nextDouble();
+			
+			Employe emp = new Employe(id, name, salary);
+			
+			list.add(emp);
+			
 			
 		}
 		
-		System.out.println(listEmploye);
+		System.out.println("Enter the employee id that will have salary increase? ");
+		int idsalary = sc.nextInt();
+		Integer pos = position(list, idsalary);
+		if(pos == null) {
+			System.out.println("This id does not exist!");
+		}else {
+			System.out.println("Enter the percentage: ");
+			double percent = sc.nextDouble();
+			list.get(pos).increaseSalary(percent);
+		}
 		
+		System.out.println();
+		System.out.println("List of employees");
+		for(Employe emp : list) {
+			System.out.println(emp);
+		}
 		
+		sc.close();
 		
 	}
+	
+	
+	public static Integer position(List<Employe> list, int id) {
+		for (int i = 0; i < list.size(); i++ ) {
+			if (list.get(i).getId() == id) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
 
 }
